@@ -1,6 +1,7 @@
 package hu.restaurant.Restaurant.Entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
@@ -12,6 +13,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Data
@@ -41,6 +43,10 @@ public class Order {
     private LocalDateTime orderDate;
 
     @ManyToOne
-    private User user;
+    private User users;
+
+    @OneToMany
+    private List<Stock> stocks;
+
 
 }

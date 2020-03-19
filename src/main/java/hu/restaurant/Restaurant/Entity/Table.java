@@ -12,7 +12,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import javax.persistence.Table;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -21,23 +20,23 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "stocks")
-public class Stock {
+@javax.persistence.Table(name = "tables")
+public class Table {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
-    private String commodity;
+    @Column(unique = true)
+    private String tableName;
+
+    private Integer seats;
 
     @Column
-    private Integer weight;
-
-    @Column
-    @JsonDeserialize(using = LocalDateDeserializer.class)
-    @JsonSerialize(using = LocalDateSerializer.class)
-    @JsonFormat(pattern = "yyyy-MM-dd")
-    private LocalDate loginDate;
+    private Boolean occupied;
+    
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "tables")
+    @JsonIgnore
+    private List<User> users;
 
 }

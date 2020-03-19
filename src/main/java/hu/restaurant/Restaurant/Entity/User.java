@@ -7,8 +7,10 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import lombok.*;
+import org.springframework.data.annotation.Id;
 
 import javax.persistence.*;
+import javax.persistence.Table;
 import java.time.LocalDate;
 import java.util.List;
 

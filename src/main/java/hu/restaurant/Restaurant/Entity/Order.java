@@ -11,6 +11,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import javax.persistence.*;
+import javax.persistence.Table;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -45,7 +46,7 @@ public class Order {
     @ManyToOne
     private User users;
 
-    @OneToMany
+    @ManyToMany
     private List<Stock> stocks;
 
 

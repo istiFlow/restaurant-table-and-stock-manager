@@ -2,28 +2,33 @@ package hu.restaurant.Restaurant.Entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import java.time.LocalDate;
+import java.util.List;
+import javax.persistence.*;
+import javax.persistence.Table;
+
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
-import lombok.*;
-import org.springframework.data.annotation.Id;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
-import javax.persistence.Table;
-import java.time.LocalDate;
-import java.util.List;
 
 @Entity
+@Table(name = "users")
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "users")
+
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column(unique = true, length = 50)
@@ -35,14 +40,15 @@ public class User {
 
     @Column
     private String firstName;
+
     @Column
     private String lastName;
 
-    @Column(unique = true)
+    @Column(unique = true,length = 100)
     private String email;
 
-    @Enumerated(EnumType.STRING)
-    private Enum Role;
+    /*@Enumerated(EnumType.STRING)*/
+    private String role;
 
     @Column
     @JsonDeserialize(using = LocalDateDeserializer.class)
@@ -50,12 +56,12 @@ public class User {
     @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate loginDate;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "users")
     @JsonIgnore
     private List<Order> orders;
 
-    @ManyToOne
-    private Table tables;
+    @ManyToMany
+    private List<RestaurantTables> restaurantTables;
 
     // for oauth2
    /* @Transient

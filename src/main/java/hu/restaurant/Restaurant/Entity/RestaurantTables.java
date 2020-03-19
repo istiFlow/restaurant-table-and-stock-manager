@@ -1,18 +1,15 @@
 package hu.restaurant.Restaurant.Entity;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
-import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.time.LocalDate;
+
 import java.util.List;
 
 @Entity
@@ -20,8 +17,8 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@javax.persistence.Table(name = "tables")
-public class Table {
+@Table(name = "tables")
+public class RestaurantTables {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,8 +32,8 @@ public class Table {
     @Column
     private Boolean occupied;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "tables")
+   /* @OneToMany(cascade = CascadeType.ALL, mappedBy = "restaurantTables")
     @JsonIgnore
-    private List<User> users;
+    private List<User> users;*/
 
 }

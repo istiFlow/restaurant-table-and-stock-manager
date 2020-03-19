@@ -40,4 +40,7 @@ public class Order {
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     private LocalDateTime orderDate;
 
+    @ManyToOne
+    private User user;
+
 }

@@ -33,7 +33,6 @@ public class User {
 
     @Column
     private String firstName;
-
     @Column
     private String lastName;
 
@@ -60,4 +59,5 @@ public class User {
     public String getName() {
         return username;
     }*/
+
 }

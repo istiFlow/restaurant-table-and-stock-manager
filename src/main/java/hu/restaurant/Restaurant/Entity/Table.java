@@ -34,7 +34,7 @@ public class Table {
 
     @Column
     private Boolean occupied;
-    
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "tables")
     @JsonIgnore
     private List<User> users;

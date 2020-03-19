@@ -54,6 +54,9 @@ public class User {
     @JsonIgnore
     private List<Order> orders;
 
+    @ManyToOne
+    private Table tables;
+
     // for oauth2
    /* @Transient
     @JsonIgnore

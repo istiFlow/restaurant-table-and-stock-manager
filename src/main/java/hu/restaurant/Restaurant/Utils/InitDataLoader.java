@@ -7,8 +7,7 @@ import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import javax.transaction.Transactional;
-import java.time.LocalDateTime;
-import java.time.ZoneOffset;
+import java.time.LocalDate;
 
 @Component
 @Transactional
@@ -23,9 +22,28 @@ public class InitDataLoader {
                 .id(1L)
                 .firstName("Károly")
                 .lastName("Dobó")
+                .username("karcsi61")
                 .email("dkaresz@gmail.com")
-                .loginDate(LocalDateTime.of(2020,3,2,10,0).toInstant(ZoneOffset.UTC).toEpochMilli())
-                .role("USER")
+                .loginDate(LocalDate.of(2000,5,20))
+                .role("PINCÉR")
+                .build());
+        userRepository.save(User.builder()
+                .id(2L)
+                .firstName("István")
+                .lastName("Kovács")
+                .username("isti34")
+                .email("isti@gmail.com")
+                .loginDate(LocalDate.of(2000,5,20))
+                .role("ADMIN")
+                .build());
+        userRepository.save(User.builder()
+                .id(3L)
+                .firstName("Gergő")
+                .lastName("Nagy")
+                .username("nagyG29")
+                .email("geri@gmail.com")
+                .loginDate(LocalDate.of(2000,5,20))
+                .role("FŐNÖK")
                 .build());
     }
 }

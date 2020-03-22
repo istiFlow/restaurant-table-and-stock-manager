@@ -55,7 +55,7 @@ public class User {
     @JsonDeserialize(using = LocalDateDeserializer.class)
     @JsonSerialize(using = LocalDateSerializer.class)
     @JsonFormat(pattern = "yyyy-MM-dd")
-    private Long loginDate;
+    private LocalDate loginDate;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "users")
     @JsonIgnore

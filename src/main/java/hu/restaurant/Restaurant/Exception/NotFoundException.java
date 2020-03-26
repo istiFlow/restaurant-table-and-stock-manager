@@ -1,12 +1,9 @@
 package hu.restaurant.Restaurant.Exception;
 
-import javassist.NotFoundException;
+public class NotFoundException extends RuntimeException {
 
-public class UserNotFoundException extends NotFoundException {
-    public UserNotFoundException(Long id) {
-        super("user");
-
-
+    public NotFoundException(String msg) {
+        super("missing: " + msg);
     }
 
 }
